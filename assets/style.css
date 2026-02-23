@@ -1,0 +1,709 @@
+/* ===================================
+   Global Styles & Variables
+   =================================== */
+
+:root {
+    --dark-bg: #0f0f14;
+    --card-bg: rgba(25, 25, 35, 0.6);
+    --pink-primary: #ff2d75;
+    --pink-secondary: #ff6b9d;
+    --pink-glow: rgba(255, 45, 117, 0.5);
+    --text-primary: #ffffff;
+    --text-secondary: #b4b4b4;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ===================================
+   Scrollbar Styling
+   =================================== */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--pink-primary), var(--pink-secondary));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--pink-primary);
+}
+
+/* ===================================
+   Navbar Styles
+   =================================== */
+
+.navbar {
+    background: rgba(15, 15, 20, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    transition: var(--transition);
+    box-shadow: 0 2px 20px rgba(255, 45, 117, 0.1);
+}
+
+.navbar-brand .brand-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.navbar-nav .nav-link {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin: 0 0.5rem;
+    position: relative;
+    transition: var(--transition);
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--pink-primary), var(--pink-secondary));
+    transition: var(--transition);
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--pink-primary);
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 80%;
+}
+
+.navbar-toggler {
+    border-color: var(--pink-primary);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem var(--pink-glow);
+}
+
+/* ===================================
+   Hero Section
+   =================================== */
+
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--dark-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--pink-glow), transparent);
+    top: -250px;
+    right: -250px;
+    opacity: 0.3;
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--pink-glow), transparent);
+    bottom: -200px;
+    left: -200px;
+    opacity: 0.2;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+.hero-content {
+    z-index: 1;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.pink-gradient {
+    background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    min-height: 60px;
+    color: var(--text-secondary);
+}
+
+.cursor {
+    color: var(--pink-primary);
+    animation: blink 1s infinite;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+/* ===================================
+   Buttons
+   =================================== */
+
+.btn-pink {
+    background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
+    color: var(--text-primary);
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-pink::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: var(--transition);
+}
+
+.btn-pink:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px var(--pink-glow);
+}
+
+.btn-pink:hover::before {
+    left: 100%;
+}
+
+.btn-outline-pink {
+    background: transparent;
+    color: var(--pink-primary);
+    padding: 0.8rem 2rem;
+    border: 2px solid var(--pink-primary);
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-outline-pink:hover {
+    background: var(--pink-primary);
+    color: var(--text-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px var(--pink-glow);
+}
+
+/* ===================================
+   Section Styles
+   =================================== */
+
+.section-padding {
+    padding: 100px 0;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.pink-gradient-text {
+    background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.title-underline {
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--pink-primary), var(--pink-secondary));
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* ===================================
+   Glass Card Effect
+   =================================== */
+
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 45, 117, 0.1);
+    transition: var(--transition);
+}
+
+.glass-card:hover {
+    border-color: rgba(255, 45, 117, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(255, 45, 117, 0.2);
+}
+
+/* ===================================
+   About Section
+   =================================== */
+
+.about-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+}
+
+.education-section h3 {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.education-item {
+    padding: 1.5rem;
+    background: rgba(255, 45, 117, 0.05);
+    border-radius: 15px;
+    border-left: 4px solid var(--pink-primary);
+}
+
+.pink-text {
+    color: var(--pink-primary);
+}
+
+.cgpa-badge {
+    background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
+    color: var(--text-primary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    box-shadow: 0 5px 15px var(--pink-glow);
+}
+
+/* ===================================
+   Skills Section
+   =================================== */
+
+.skill-category {
+    height: 100%;
+}
+
+.skill-category h4 {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.skill-item {
+    margin-bottom: 1rem;
+}
+
+.progress-bar-custom {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--pink-primary), var(--pink-secondary));
+    border-radius: 10px;
+    width: 0;
+    transition: width 1.5s ease;
+    position: relative;
+    box-shadow: 0 0 10px var(--pink-glow);
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+/* ===================================
+   Timeline
+   =================================== */
+
+.timeline {
+    position: relative;
+    padding-left: 3rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(180deg, var(--pink-primary), var(--pink-secondary));
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -3.5rem;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: var(--pink-primary);
+    border-radius: 50%;
+    border: 4px solid var(--dark-bg);
+    box-shadow: 0 0 20px var(--pink-glow);
+}
+
+.company-name {
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+/* ===================================
+   Projects Section
+   =================================== */
+
+.project-card {
+    height: 100%;
+    transition: var(--transition);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 50px var(--pink-glow);
+}
+
+.project-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px var(--pink-glow);
+}
+
+.project-icon i {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-badge {
+    background: rgba(255, 45, 117, 0.2);
+    color: var(--pink-primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255, 45, 117, 0.3);
+}
+
+/* ===================================
+   Achievements Section
+   =================================== */
+
+.achievement-card {
+    height: 100%;
+    transition: var(--transition);
+}
+
+.achievement-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 50px var(--pink-glow);
+}
+
+.achievement-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px var(--pink-glow);
+}
+
+.achievement-icon i {
+    font-size: 2rem;
+    color: var(--text-primary);
+}
+
+/* ===================================
+   Contact Section
+   =================================== */
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.contact-info-item a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-info-item a:hover {
+    color: var(--pink-primary);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--pink-primary), var(--pink-secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 5px 15px var(--pink-glow);
+}
+
+.social-link:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 30px var(--pink-glow);
+}
+
+.custom-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 45, 117, 0.2);
+    color: var(--text-primary);
+    padding: 0.8rem;
+    border-radius: 10px;
+    transition: var(--transition);
+}
+
+.custom-input:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--pink-primary);
+    color: var(--text-primary);
+    box-shadow: 0 0 20px var(--pink-glow);
+    outline: none;
+}
+
+.custom-input::placeholder {
+    color: var(--text-secondary);
+}
+
+.form-label {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.error-message {
+    color: #ff4444;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    display: none;
+}
+
+.success-message {
+    color: #00ff88;
+    font-size: 1rem;
+    text-align: center;
+    display: none;
+}
+
+/* ===================================
+   Footer
+   =================================== */
+
+.footer {
+    background: rgba(15, 15, 20, 0.95);
+    border-top: 1px solid rgba(255, 45, 117, 0.2);
+    color: var(--text-secondary);
+}
+
+/* ===================================
+   Animations
+   =================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .section-title h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .section-padding {
+        padding: 60px 0;
+    }
+    
+    .navbar-nav .nav-link {
+        margin: 0.5rem 0;
+    }
+    
+    .navbar-nav .nav-link::after {
+        display: none;
+    }
+    
+    .timeline {
+        padding-left: 2rem;
+    }
+    
+    .timeline-dot {
+        left: -2.5rem;
+    }
+    
+    .cgpa-badge {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-description {
+        font-size: 0.9rem;
+    }
+    
+    .btn-pink, .btn-outline-pink {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hero-buttons .btn {
+        margin: 0 !important;
+    }
+}
